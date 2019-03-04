@@ -1,0 +1,68 @@
+object fmMain: TfmMain
+  Left = 0
+  Top = 0
+  Caption = 'fMain'
+  ClientHeight = 388
+  ClientWidth = 626
+  Position = Designed
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  DesignerMasterStyle = 0
+  object Label1: TLabel
+    Position.X = 40.000000000000000000
+    Position.Y = 16.000000000000000000
+    Size.Width = 497.000000000000000000
+    Size.Height = 49.000000000000000000
+    Size.PlatformDefault = False
+    Text = 
+      '1. Paste tomato.es list to first sheet of Data.xlsx 2. Paste cor' +
+      'rections to second 3. Clear Sheet3 4. Press btProcess 5. Copy re' +
+      'sult from Sheet3'
+  end
+  object btProcess: TButton
+    Position.X = 56.000000000000000000
+    Position.Y = 72.000000000000000000
+    TabOrder = 2
+    Text = 'btProcess'
+    OnClick = btProcessClick
+  end
+  object btProcessCsv: TButton
+    Position.X = 56.000000000000000000
+    Position.Y = 160.000000000000000000
+    TabOrder = 1
+    Text = 'btProcessCsv'
+    OnClick = btProcessCsvClick
+  end
+  object btSaveHead: TButton
+    Position.X = 288.000000000000000000
+    Position.Y = 280.000000000000000000
+    TabOrder = 6
+    Text = 'btSaveHead'
+    OnClick = btSaveHeadClick
+  end
+  object Label4: TLabel
+    Position.X = 32.000000000000000000
+    Position.Y = 248.000000000000000000
+    Text = 'Last processed period:'
+  end
+  object edLastPeriod: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 9
+    Position.X = 160.000000000000000000
+    Position.Y = 248.000000000000000000
+    Locked = True
+    Size.Width = 217.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object btHelp: TButton
+    Position.X = 328.000000000000000000
+    Position.Y = 160.000000000000000000
+    TabOrder = 5
+    Text = 'btHelp'
+    OnClick = btHelpClick
+  end
+end

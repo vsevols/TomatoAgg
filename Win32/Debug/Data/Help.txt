@@ -1,0 +1,4 @@
+1. Save tomatoes into Data\tomato.es.csv
+2. Save corrections to Corrections.csv
+3. Press btProcessCsv 
+4. You can open your output.csv in Excel
