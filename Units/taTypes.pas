@@ -36,8 +36,11 @@ type
     procedure Check;
     procedure ClearUntil(ALastStart: TDatetime);
     procedure FilterByTag(ATag: string; ARemoveTag: Boolean);
+    /// <summary>TTimePeriodList.JustifyMidnight
+    /// Prevents the transition period through midnight
+    /// </summary>
     procedure JustifyMidnight;
-    procedure ShrinkOverlapped;
+    function ShrinkOverlapped: Boolean;
     procedure TimeShift(ASeconds: Integer);
   end;
 implementation
@@ -282,13 +285,13 @@ begin
       LNewPeriod := TTimePeriod.Create(DateOf(LPeriod.Finish),
         SecondsBetween(DateOf(LPeriod.Finish), LPeriod.Finish) + SECONDSINMINUTE,
         LPeriod.Tags);
-      //DONE: Здесь и в остальных местах Exchange! Структуры ведь не сохраняются (?)
-      I := IndexOf(LPeriod); //DONE: IndexOf - корректно ли?
+      I := IndexOf(LPeriod);
       Self[I] := Self[I].IncDuration(-LNewPeriod.Duration, False);
       Self.Insert(I + 1, LNewPeriod);
     end;
 
-  ShrinkOverlapped;
+  while ShrinkOverlapped do
+    JustifyMidnight;
 end;
 
 procedure TTimePeriodList.MergeSequences;
@@ -306,16 +309,18 @@ begin
     end;
 end;
 
-procedure TTimePeriodList.ShrinkOverlapped;
+function TTimePeriodList.ShrinkOverlapped: Boolean;
 var
   dbgTmp: TDateTime;
   I: Integer;
-begin               dbgTmp := StrToDateTime('04.01.2019 19:00'); //TODO -cDelete: dbg
+begin
+  Result := False;
   for I := 1 to Count - 1 do
   begin
     if Self[I - 1].Finish > Self[I].Start then
     begin
       Self[I] := Self[I].TimeShift(SecondsBetween(Self[I].Start, Self[I - 1].Finish));
+      Result := True;
     end;
   end;
 end;

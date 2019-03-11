@@ -2,3 +2,4 @@
 2. Save corrections to Corrections.csv
 3. Press btProcessCsv 
 4. You can open your output.csv in Excel
+5. Press btSaveHead to save last processed time period to fixate next report start position.
