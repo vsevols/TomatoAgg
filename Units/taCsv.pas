@@ -127,7 +127,7 @@ end;
 procedure TTaCsv.GetTomatoes(ATomatoes: TTimePeriodList; var ALastStart:
     TDatetime);
 const
-  COLIDX_DATE = 0;
+  COLIDX_END_DATE = 0;
   COLIDX_TAGS = 1;
 begin
   ATomatoes.Clear;
@@ -136,7 +136,7 @@ begin
     begin
       ATomatoes.Add(
         TTimePeriod.Create(
-          TomatoDateToDateTime(FieldValue(COLIDX_DATE)),
+          IncSecond(TomatoDateToDateTime(FieldValue(COLIDX_END_DATE)), -TOMATODURATION),
           TOMATODURATION,
           VarToStrDef(FieldValue(COLIDX_TAGS), '')
             )
