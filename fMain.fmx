@@ -65,4 +65,14 @@ object fmMain: TfmMain
     Text = 'btHelp'
     OnClick = btHelpClick
   end
+  object btDownloadCsv: TButton
+    Position.X = 56.000000000000000000
+    Position.Y = 120.000000000000000000
+    Size.Width = 97.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 10
+    Text = 'btDownloadCsv'
+    OnClick = btDownloadCsvClick
+  end
 end

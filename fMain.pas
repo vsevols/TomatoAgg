@@ -17,6 +17,8 @@ type
     Label4: TLabel;
     edLastPeriod: TEdit;
     btHelp: TButton;
+    btDownloadCsv: TButton;
+    procedure btDownloadCsvClick(Sender: TObject);
     procedure btHelpClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -49,6 +51,11 @@ const
 
 
 {$R *.fmx}
+
+procedure TfmMain.btDownloadCsvClick(Sender: TObject);
+begin
+  ShellExecute('http://www.tomato.es/tomatoes.csv');
+end;
 
 procedure TfmMain.btHelpClick(Sender: TObject);
 begin
